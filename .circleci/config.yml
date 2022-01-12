@@ -28,6 +28,7 @@ jobs:
       - attach_workspace:
           at: .
       - run: cat test.txt
+      - run: ls /tmp
       - run: |
           if [[ `cat /tmp/test.txt` == "Creating the text file" ]]; then
             echo "It worked!";
