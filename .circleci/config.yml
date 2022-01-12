@@ -29,6 +29,8 @@ jobs:
           at: .
       - run: cat test.txt
       - run: ls /tmp
+      - run: pwd
+      - run: ls
       - run: |
           if [[ `cat /tmp/test.txt` == "Creating the text file" ]]; then
             echo "It worked!";
