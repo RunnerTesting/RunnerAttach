@@ -7,6 +7,7 @@ workflows:
       - attaching_test:
           requires:
             - runner
+      - build
 
 jobs:
   runner:
@@ -37,3 +38,13 @@ jobs:
           else
             echo "Nope!"; exit 1
           fi
+
+  build:
+    docker:
+      - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
+        # auth:
+        #   username: mydockerhub-user
+        #   password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout # check out the code in the project directory
+      - run: echo "hello world" # run the `echo` command
