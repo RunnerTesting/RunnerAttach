@@ -11,7 +11,7 @@ workflows:
 jobs:
   runner:
     machine: true
-    resource_class: circleci-runner/alberto-macbook
+    resource_class: runnertesting/al-macbook
     steps:
       - run: echo "Hi I'm on Runners!"
       - run: echo "Creating the text file" > test.txt
@@ -23,7 +23,7 @@ jobs:
 
   attaching_test:
     machine: true
-    resource_class: circleci-runner/alberto-macbook
+    resource_class: runnertesting/al-macbook
     steps:
       - attach_workspace:
           at: .
