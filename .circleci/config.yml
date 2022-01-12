@@ -16,10 +16,10 @@ jobs:
       - run: echo "Hi I'm on Runners!"
       - run: echo "Creating the text file" > test.txt
       - run: cat test.txt
-      - persist_to_workspace:
-          root: .
-          paths:
-            - test.txt
+      # - persist_to_workspace:
+      #     root: .
+      #     paths:
+      #       - test.txt
 
   attaching_test:
     machine: true
