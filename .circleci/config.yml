@@ -4,9 +4,6 @@ workflows:
   testing:
     jobs:
       - runner
-      - attaching_test:
-          requires:
-            - runner
 
 jobs:
   runner:
