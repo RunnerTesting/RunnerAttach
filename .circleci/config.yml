@@ -1,39 +1,14 @@
 version: 2.1
 
-workflows:
-  testing:
-    jobs:
-      - runner
-      - attaching_test:
-          requires:
-            - runner
-
 jobs:
-  runner:
-    machine: true
-    resource_class: runnertesting/al-macbook
+  test:
+    machine:
+        image: ubuntu-2004:202111-01
+    resource_class: medium
     steps:
-      - run: echo "Hi I'm on Runners!"
-      - run: echo "Creating the text file" > test.txt
-      - run: cat test.txt
-      - persist_to_workspace:
-          root: .
-          paths:
-            - test.txt
+        - run: circleci-agent step halt
 
-  attaching_test:
-    machine: true
-    resource_class: runnertesting/al-macbook
-    steps:
-      - attach_workspace:
-          at: .
-      - run: cat test.txt
-      - run: ls /tmp
-      - run: pwd
-      - run: ls
-      - run: |
-          if [[ `cat test.txt` == "Creating the text file" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi
+workflows:
+  my-workflow:
+    jobs:
+      - test
